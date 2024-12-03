@@ -1,0 +1,112 @@
+body {
+    padding-top: 56px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Center content and add animation */
+.container.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    background: transparent;
+    color: white;
+    font-size: larger;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.Meal-Preference {
+    position: relative;
+    padding: 20px;
+}
+
+/* Styling for the recipe content container */
+.recipe.content {
+    max-width: 800px;
+    margin: 0 auto; /* Center the div horizontally */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center text within the container */
+    animation: slideIn 1.5s ease-out; /* Slide in animation */
+}
+
+/* Headings and text styling */
+.recipe h1, .recipe h2 {
+    color: #343a40; /* Dark gray color for text */
+    font-weight: bold;
+}
+
+.unique-recipes {
+    margin-top: 20px;
+}
+
+/* Responsive column styling */
+.recipe .col-md-6 {
+    margin-top: 20px;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Start from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+.saved-recipes {
+    position: fixed;
+    right: 0;
+    top: 70px; /* Ensure it aligns below any fixed header */
+    width: 200px;
+    background-color: #f8f9fa;
+    border-left: 1px solid #ddd;
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.transparent-content {
+    max-width: 800px;
+    margin: 0 auto; /* Center the div horizontally */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* White background with 80% transparency */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center text within the container */
+    position: relative;
+    z-index: 1; /* Ensure it's above the video background */
+    animation: slideIn 1.5s ease-out; /* Slide in animation */
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
