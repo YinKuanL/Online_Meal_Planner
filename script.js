@@ -89,9 +89,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveRecipe(recipeTitle) {
         if (!savedRecipes.includes(recipeTitle)) {
+            // 儲存到本地儲存
             savedRecipes.push(recipeTitle);
             localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
             updateSavedRecipes();
+
+            // 約定向後端伺服器發送POST請求
+            fetch('/save-recipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ recipe: recipeTitle })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.error('Error saving recipe to server:', error));
         }
     }
 
@@ -115,5 +133,70 @@ document.addEventListener('DOMContentLoaded', function () {
                 savedRecipesList.appendChild(li);
             });
         }
+    }
+
+    document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
+
+    function downloadCompleteRecipes() {
+        const recipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+
+        // Create an array of promises that resolve to full recipe details
+        const promises = recipes.map(recipeTitle => getFullRecipeDetails(recipeTitle));
+
+        // Use Promise.all to ensure all promises are resolved
+        Promise.all(promises)
+            .then(recipesDetails => {
+                const allRecipesDetails = recipesDetails.join('\n\n');
+                const blob = new Blob([allRecipesDetails], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'full-recipes.txt';
+                link.click();
+            })
+            .catch(error => {
+                console.error('Error fetching recipes:', error);
+            });
+    }
+
+    function getFullRecipeDetails(recipeTitle) {
+        return fetch('/recipes/list.txt')
+            .then(response => response.text())
+            .then(text => {
+                // Split the list into an array and find the matching file
+                const files = text.trim().split('\n').map(file => file.toLowerCase());
+                const matchingFile = files.find(file => file.includes(recipeTitle.toLowerCase()));
+
+                if (!matchingFile) {
+                    throw new Error(`Recipe ${recipeTitle} file not found`);
+                }
+
+                console.log(`Fetching file: ${matchingFile}`);  // Log the file name being fetched
+
+                // Fetch the matching file
+                return fetch(`recipes/${matchingFile}`);
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error loading recipe file: ${matchingFile}`);
+                }
+                return response.json();
+            })
+            .then(recipe => {
+                console.log(`Read title: ${recipe.title}`);  // Log the title read from the file
+                return `
+                Recipe: ${recipe.title}
+                Source: ${recipe.source || 'Unknown'}
+                
+                Ingredients:
+                ${recipe.ingredients.join('\n')}
+                
+                Directions:
+                ${recipe.directions.join('\n')}
+            `;
+            })
+            .catch(error => {
+                console.error('Error fetching recipe details:', error);
+                return `Recipe: ${recipeTitle} (Details not available)`;
+            });
     }
 });
