@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve saved recipes from local storage or initialise an empty array
-    const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const savedRecipesList = document.getElementById('savedRecipesList');
     const savedRecipesDetails = document.getElementById('savedRecipesDetails');
-    const form = document.getElementById('meal-form');
     let files = [];
 
     // Update the list of saved recipes in the UI
     updateSavedRecipes();
 
     // Fetch the list of recipe files
-    fetch('recipes/list.txt')
+    fetch('/recipes/list.txt')
         .then(response => response.text())
         .then(text => {
             files = text.trim().split('\n'); // Split file list into an array of filenames
@@ -28,30 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading the list.txt file:', error));
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const preference = document.getElementById('preference').value.toLowerCase();
-        // Search and display recipes
-        searchAndDisplayRecipes(preference);
-    });
-
-    // Function to search and display recipes
-    function searchAndDisplayRecipes(query) {
-        const matchingRecipes = files.filter(fileName => fileName.toLowerCase().includes(query));
-        if (matchingRecipes.length > 0) {
-            document.getElementById('recipe-output').innerHTML = '';
-            matchingRecipes.forEach(fileName => {
-                // Fetch and render each matching recipe (by the format .json)
-                fetch(`recipes/${fileName}`)
-                    .then(response => response.json())
-                    .then(data => renderRecipe(data))
-                    .catch(error => console.error(`Error loading ${fileName}:`, error));
-            });
-        } else {
-            document.getElementById('recipe-output').innerHTML = '<p>No matching recipes found.</p>';
-        }
-    }
-
     // Fetch and render a random recipe from the list
     function fetchAndRenderRandomRecipe() {
         const randomFile = getRandomFiles(files, 1)[0];
@@ -61,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fetch a recipe from a file and render it
     function fetchAndRenderRecipe(fileName) {
-        fetch(`recipes/${fileName}`)
+        fetch(`/recipes/${fileName}`)
             .then(response => response.json())
             .then(data => {
                 renderRecipe(data);
@@ -188,3 +162,5 @@ ${recipe.directions.join('\n')}
     // Event listener for download button
     document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
 });
+
+

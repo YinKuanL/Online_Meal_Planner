@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="third-version (file organised)">
+    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="forth-version(file organised)&#10;&#10;&#10;file organised in another folder (pages contains contact.html home.html Planners.html Recipes.html)">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/Planners.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/Recipes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Planners.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-website-server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-website-server/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +69,7 @@
     &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Yin Kuan/OneDrive/桌面/CW_1&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -104,6 +113,8 @@
       <workItem from="1733481517804" duration="4185000" />
       <workItem from="1733486632613" duration="637000" />
       <workItem from="1733489196587" duration="6484000" />
+      <workItem from="1733497664795" duration="76000" />
+      <workItem from="1733498112355" duration="5443000" />
     </task>
     <task id="LOCAL-00001" summary="first ver-web">
       <option name="closed" value="true" />
@@ -159,6 +170,7 @@
     <MESSAGE value="fetching error" />
     <MESSAGE value="second-verion (download function complete)" />
     <MESSAGE value="third-version (file organised)" />
-    <option name="LAST_COMMIT_MESSAGE" value="third-version (file organised)" />
+    <MESSAGE value="forth-version(file organised)&#10;&#10;&#10;file organised in another folder (pages contains contact.html home.html Planners.html Recipes.html)" />
+    <option name="LAST_COMMIT_MESSAGE" value="forth-version(file organised)&#10;&#10;&#10;file organised in another folder (pages contains contact.html home.html Planners.html Recipes.html)" />
   </component>
 </project>
