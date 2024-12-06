@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const savedRecipesList = document.getElementById('savedRecipesList');
+    const savedRecipesDetails = document.getElementById('savedRecipesDetails');
     const form = document.getElementById('meal-form');
     let files = [];
+
+    console.log(savedRecipes);
+    console.log(savedRecipesList);
+    console.log(form);
+    console.log(files);
 
     updateSavedRecipes();
 
@@ -11,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(text => {
             files = text.trim().split('\n');
             const storedRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
+
+            console.log(savedRecipesDetails);
+            console.log(storedRecipe);
+
             if (storedRecipe) {
                 renderRecipe(storedRecipe);
             } else {
@@ -27,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function searchAndDisplayRecipes(query) {
         const matchingRecipes = files.filter(fileName => fileName.toLowerCase().includes(query));
-
         if (matchingRecipes.length > 0) {
             document.getElementById('recipe-output').innerHTML = '';
             matchingRecipes.forEach(fileName => {
@@ -79,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
             recipeOutput.appendChild(recipeDiv);
 
             recipeDiv.querySelector('.save-recipe').addEventListener('click', function () {
-                saveRecipe(recipe.title);
+                saveRecipe(recipe); // Pass the entire recipe object to the saveRecipe function
             });
 
             document.getElementById('new-recipe').addEventListener('click', fetchAndRenderRandomRecipe);
@@ -87,116 +96,83 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function saveRecipe(recipeTitle) {
-        if (!savedRecipes.includes(recipeTitle)) {
-            // 儲存到本地儲存
-            savedRecipes.push(recipeTitle);
-            localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
-            updateSavedRecipes();
+    // Function to save recipe title
+    function saveRecipe(recipe) {
+        const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
 
-            // 約定向後端伺服器發送POST請求
-            fetch('/save-recipe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ recipe: recipeTitle })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => console.log(data))
-                .catch(error => console.error('Error saving recipe to server:', error));
+        // Check if the recipe is already saved
+        const isAlreadySaved = recipeDetails.some(savedRecipe => savedRecipe.title === recipe.title);
+        console.log(isAlreadySaved);
+        console.log(recipeDetails);
+        if (!isAlreadySaved) {
+            // Save the recipe details to local storage
+            recipeDetails.push(recipe);
+            localStorage.setItem('savedRecipesDetails', JSON.stringify(recipeDetails));
+            updateSavedRecipes();
         }
     }
 
+    function updateSavedRecipes() {
+        const savedRecipesDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
+        if (savedRecipesList) {
+            savedRecipesList.innerHTML = '';
+            savedRecipesDetails.forEach(recipe => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = recipe.title;
+                savedRecipesList.appendChild(li);
+            });
+        }
+    }
+
+// Attaching the functions to buttons or events in the UI can ensure they are called at the right times
     function clearLastRecipe() {
-        if (savedRecipes.length > 0) {
-            savedRecipes.pop();
-            localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+        const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
+
+        if (recipeDetails.length > 0) {
+            recipeDetails.pop();
+            localStorage.setItem('savedRecipesDetails', JSON.stringify(recipeDetails));
             updateSavedRecipes();
         } else {
             console.log('No more recipes to clear.');
         }
     }
 
-    function updateSavedRecipes() {
-        if (savedRecipesList) {
-            savedRecipesList.innerHTML = '';
-            savedRecipes.forEach(recipe => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item';
-                li.textContent = recipe;
-                savedRecipesList.appendChild(li);
-            });
-        }
-    }
-
-    document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
-
     function downloadCompleteRecipes() {
-        const recipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+        const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
 
-        // Create an array of promises that resolve to full recipe details
-        const promises = recipes.map(recipeTitle => getFullRecipeDetails(recipeTitle));
+        if (recipeDetails.length === 0) {
+            console.log('No recipes to download.');
+            return;
+        }
 
-        // Use Promise.all to ensure all promises are resolved
-        Promise.all(promises)
-            .then(recipesDetails => {
-                const allRecipesDetails = recipesDetails.join('\n\n');
-                const blob = new Blob([allRecipesDetails], { type: 'text/plain' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'full-recipes.txt';
-                link.click();
-            })
-            .catch(error => {
-                console.error('Error fetching recipes:', error);
-            });
+        const headerText = "This is your selected recipes. Enjoy your fantastic cooking journey.\n\n";
+        const formattedRecipes = recipeDetails.map(recipe => formatRecipe(recipe));
+
+        // Join header text with recipes
+        const allRecipesDetails = headerText + formattedRecipes.join('\n\n');
+
+        const blob = new Blob([allRecipesDetails], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'full-recipes.txt';
+        link.click();
     }
 
-    function getFullRecipeDetails(recipeTitle) {
-        return fetch('/recipes/list.txt')
-            .then(response => response.text())
-            .then(text => {
-                // Split the list into an array and find the matching file
-                const files = text.trim().split('\n').map(file => file.toLowerCase());
-                const matchingFile = files.find(file => file.includes(recipeTitle.toLowerCase()));
-
-                if (!matchingFile) {
-                    throw new Error(`Recipe ${recipeTitle} file not found`);
-                }
-
-                console.log(`Fetching file: ${matchingFile}`);  // Log the file name being fetched
-
-                // Fetch the matching file
-                return fetch(`recipes/${matchingFile}`);
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error loading recipe file: ${matchingFile}`);
-                }
-                return response.json();
-            })
-            .then(recipe => {
-                console.log(`Read title: ${recipe.title}`);  // Log the title read from the file
-                return `
-                Recipe: ${recipe.title}
-                Source: ${recipe.source || 'Unknown'}
-                
-                Ingredients:
-                ${recipe.ingredients.join('\n')}
-                
-                Directions:
-                ${recipe.directions.join('\n')}
-            `;
-            })
-            .catch(error => {
-                console.error('Error fetching recipe details:', error);
-                return `Recipe: ${recipeTitle} (Details not available)`;
-            });
+// Helper function to format each recipe nicely
+    function formatRecipe(recipe) {
+        return `
+Recipe: ${recipe.title}
+Source: ${recipe.source || 'Unknown'}
+        
+Ingredients:
+${recipe.ingredients.join('\n')}
+        
+Directions:
+${recipe.directions.join('\n')}
+        `;
     }
+
+// Event listener for download button
+    document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
 });

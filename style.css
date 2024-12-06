@@ -47,9 +47,9 @@ body {
     max-width: 800px;
     margin: 0 auto; /* Center the div horizontally */
     padding: 20px;
-    background-color: #f8f9fa; /* Light gray background for contrast */
+    background-color: rgba(248, 249, 250, 0.8); /* Light gray background with 80% opacity */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     text-align: center; /* Center text within the container */
     animation: slideIn 1.5s ease-out; /* Slide in animation */
 }
@@ -106,7 +106,3 @@ body {
     animation: slideIn 1.5s ease-out; /* Slide in animation */
 }
 
-@keyframes slideIn {
-    0% { transform: translateY(30px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
