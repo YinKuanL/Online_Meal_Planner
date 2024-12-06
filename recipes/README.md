@@ -1,0 +1,41 @@
+# Alphanumeric Index
+
+## Recipes starting with number
+
+ * [1](1)
+ * [2](2)
+ * [3](3)
+ * [4](4)
+ * [5](5)
+ * [6](6)
+ * [7](7)
+ * [8](8)
+
+## Recipes starting with letter
+
+ * [A](a)
+ * [B](b)
+ * [C](c)
+ * [D](d)
+ * [E](e)
+ * [F](f)
+ * [G](g)
+ * [H](h)
+ * [I](i)
+ * [J](j)
+ * [K](k)
+ * [L](l)
+ * [M](m)
+ * [N](n)
+ * [O](o)
+ * [P](p)
+ * [Q](q)
+ * [R](r)
+ * [S](s)
+ * [T](t)
+ * [U](u)
+ * [V](v)
+ * [W](w)
+ * [X](x)
+ * [Y](y)
+ * [Z](z)

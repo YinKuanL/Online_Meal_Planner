@@ -1,26 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve saved recipes from local storage or initialise an empty array
     const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
     const savedRecipesList = document.getElementById('savedRecipesList');
     const savedRecipesDetails = document.getElementById('savedRecipesDetails');
     const form = document.getElementById('meal-form');
     let files = [];
 
-    console.log(savedRecipes);
-    console.log(savedRecipesList);
-    console.log(form);
-    console.log(files);
-
+    // Update the list of saved recipes in the UI
     updateSavedRecipes();
 
+    // Fetch the list of recipe files
     fetch('recipes/list.txt')
         .then(response => response.text())
         .then(text => {
-            files = text.trim().split('\n');
+            files = text.trim().split('\n'); // Split file list into an array of filenames
             const storedRecipe = JSON.parse(localStorage.getItem('currentRecipe'));
 
             console.log(savedRecipesDetails);
             console.log(storedRecipe);
 
+            // If a recipe is stored, render it, otherwise fetch and render a random recipe
             if (storedRecipe) {
                 renderRecipe(storedRecipe);
             } else {
@@ -32,14 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
         event.preventDefault();
         const preference = document.getElementById('preference').value.toLowerCase();
+        // Search and display recipes
         searchAndDisplayRecipes(preference);
     });
 
+    // Function to search and display recipes
     function searchAndDisplayRecipes(query) {
         const matchingRecipes = files.filter(fileName => fileName.toLowerCase().includes(query));
         if (matchingRecipes.length > 0) {
             document.getElementById('recipe-output').innerHTML = '';
             matchingRecipes.forEach(fileName => {
+                // Fetch and render each matching recipe (by the format .json)
                 fetch(`recipes/${fileName}`)
                     .then(response => response.json())
                     .then(data => renderRecipe(data))
@@ -50,11 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Fetch and render a random recipe from the list
     function fetchAndRenderRandomRecipe() {
         const randomFile = getRandomFiles(files, 1)[0];
+        console.log(randomFile);
         fetchAndRenderRecipe(randomFile);
     }
 
+    // Fetch a recipe from a file and render it
     function fetchAndRenderRecipe(fileName) {
         fetch(`recipes/${fileName}`)
             .then(response => response.json())
@@ -65,10 +70,12 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error(`Error loading ${fileName}:`, error));
     }
 
+    // Select random files from a list
     function getRandomFiles(files, count) {
         return files.sort(() => 0.5 - Math.random()).slice(0, count);
     }
 
+    // Render the recipe on the webpage
     function renderRecipe(recipe) {
         const recipeOutput = document.getElementById('recipe-output');
         if (recipeOutput) {
@@ -87,16 +94,18 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             recipeOutput.appendChild(recipeDiv);
 
+            // Event listeners for buttons within the recipe
             recipeDiv.querySelector('.save-recipe').addEventListener('click', function () {
                 saveRecipe(recipe); // Pass the entire recipe object to the saveRecipe function
             });
 
+            // Fetch a new random recipe
             document.getElementById('new-recipe').addEventListener('click', fetchAndRenderRandomRecipe);
             document.getElementById('clear-last-recipe').addEventListener('click', clearLastRecipe);
         }
     }
 
-    // Function to save recipe title
+    // Save a recipe to local storage
     function saveRecipe(recipe) {
         const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
 
@@ -112,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Update the list of saved recipes in the UI
     function updateSavedRecipes() {
         const savedRecipesDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
         if (savedRecipesList) {
@@ -125,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-// Attaching the functions to buttons or events in the UI can ensure they are called at the right times
+    // Clear the last saved recipe
     function clearLastRecipe() {
         const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
 
@@ -138,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Download all saved recipes as a text file
     function downloadCompleteRecipes() {
         const recipeDetails = JSON.parse(localStorage.getItem('savedRecipesDetails')) || [];
 
@@ -152,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Join header text with recipes
         const allRecipesDetails = headerText + formattedRecipes.join('\n\n');
 
+        // Create and trigger a download link
         const blob = new Blob([allRecipesDetails], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
@@ -159,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.click();
     }
 
-// Helper function to format each recipe nicely
+    // Helper function to format each recipe nicely
     function formatRecipe(recipe) {
         return `
 Recipe: ${recipe.title}
@@ -173,6 +185,6 @@ ${recipe.directions.join('\n')}
         `;
     }
 
-// Event listener for download button
+    // Event listener for download button
     document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
 });

@@ -6,10 +6,8 @@ const app = express();
 
 app.use(express.json());
 
-// 配置靜態文件夾路徑，指向 CW_1 資料夾
 app.use(express.static(path.join(__dirname, '..')));
 
-// 處理 POST 請求儲存食譜至 list.txt
 app.post('/save-recipe', (req, res) => {
     const { recipe } = req.body;
     fs.appendFile(path.join(__dirname, 'list.txt'), `${recipe}\n`, (err) => {
