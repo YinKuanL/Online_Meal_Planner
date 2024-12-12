@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static('static'));
 
 app.post('/save-recipe', (req, res) => {
     const { recipe } = req.body;
