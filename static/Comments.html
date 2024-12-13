@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Online Meal Planner</title>
+    <title>Comments - Online Meal Planner</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css"> <!-- Link to the external CSS file -->
+    <link href="/style.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="Comments-page">
 
 <!-- Video Background -->
 <video class="video-background" autoplay muted loop>
@@ -32,24 +33,37 @@
             <li class="nav-item">
                 <a class="nav-link" href="Recipes.html">Recipes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="Comments.html">Comments</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<!-- Main Content -->
-<div class="container content">
-    <h1>Contact Me</h1>
-    <p>Reach out to me at: <a href="mailto:info@mealplanner.com">rvtv86@durham.ac.uk</a></p>
+<div class="container mt-5">
+    <h1>Comments</h1>
+    <form id="comment-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea id="comment" class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+    <hr>
+    <h2>All Comments</h2>
+    <ul id="comments-list" class="list-group">
+        <!-- Comments will be dynamically loaded here -->
+    </ul>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="/comments.js"></script>
 <script src="audioPlayer.js"></script>
 </body>
 </html>

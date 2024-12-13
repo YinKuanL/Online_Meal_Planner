@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const commentsFilePath = path.join(__dirname, 'comments.json');
 
 
 app.use(express.json());
@@ -48,6 +49,52 @@ app.get('/recipe-details/:title', (req, res) => {
             }
 
             res.json(JSON.parse(recipeData));
+        });
+    });
+});
+
+// Add this after your existing routes in the Node.js server file:
+
+// API to fetch all comments
+app.get('/comments', (req, res) => {
+    fs.readFile(path.join(__dirname, commentsFilePath), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading comments:', err);
+            return res.status(500).send('Error loading comments');
+        }
+        res.json(JSON.parse(data || '[]')); // Return parsed JSON or empty array if file content is empty
+    });
+});
+
+app.post('/comments', (req, res) => {
+    console.log('POST /comments called');
+    console.log('Request body:', req.body);
+});
+
+// API to save a comment
+app.post('/comments', (req, res) => {
+    const { name, comment } = req.body;
+
+    if (!name || !comment) {
+        return res.status(400).send('Name and comment are required');
+    }
+
+    const newComment = { name, comment, timestamp: new Date().toISOString() };
+
+    // Read the existing comments, append the new one and save the file
+    fs.readFile(path.join(__dirname, commentsFilePath), 'utf8', (err, data) => {
+        let comments = [];
+        if (!err) {
+            comments = JSON.parse(data || '[]');
+        }
+        comments.push(newComment);
+
+        fs.writeFile(path.join(__dirname, commentsFilePath), JSON.stringify(comments, null, 4), (writeErr) => {
+            if (writeErr) {
+                console.error('Error saving comment:', writeErr);
+                return res.status(500).send('Error saving comment');
+            }
+            res.status(201).json(newComment);
         });
     });
 });
