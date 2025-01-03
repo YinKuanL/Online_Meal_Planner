@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="sixth-version(Comment function)&#10;&#10;I added the Comment function which receive user comments and save into server. But there are still some problems: it cannot load comments.json location. Therefore, it cannot properly display the comments.">
+    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="seventh-version(Comment function - revised)&#10;&#10;I move the comment.json to the my-server folder.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-website-server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-website-server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/comments.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-website-server/comments.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-website-server/comments.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-website-server/comments.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/Planners.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/Planners.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/Recipes.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/Recipes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +127,7 @@
       <workItem from="1735824346301" duration="514000" />
       <workItem from="1735824951491" duration="16000" />
       <workItem from="1735824978300" duration="58000" />
-      <workItem from="1735825042666" duration="4221000" />
+      <workItem from="1735825042666" duration="9703000" />
     </task>
     <task id="LOCAL-00001" summary="first ver-web">
       <option name="closed" value="true" />
@@ -182,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734109006979</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="seventh-version(Comment function - revised)&#10;&#10;I move the comment.json to the my-server folder.">
+      <option name="closed" value="true" />
+      <created>1735831199095</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735831199095</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +218,7 @@
     <MESSAGE value="forth-version(file organised)&#10;&#10;&#10;file organised in another folder (pages contains contact.html home.html Planners.html Recipes.html)" />
     <MESSAGE value="fifth-version(Path organised)&#10;&#10;Adjust the server.js to change the served file (static)" />
     <MESSAGE value="sixth-version(Comment function)&#10;&#10;I added the Comment function which receive user comments and save into server. But there are still some problems: it cannot load comments.json location. Therefore, it cannot properly display the comments." />
-    <option name="LAST_COMMIT_MESSAGE" value="sixth-version(Comment function)&#10;&#10;I added the Comment function which receive user comments and save into server. But there are still some problems: it cannot load comments.json location. Therefore, it cannot properly display the comments." />
+    <MESSAGE value="seventh-version(Comment function - revised)&#10;&#10;I move the comment.json to the my-server folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="seventh-version(Comment function - revised)&#10;&#10;I move the comment.json to the my-server folder." />
   </component>
 </project>
