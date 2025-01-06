@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // Function to load all comments from the backend
     function loadComments() {
+        $('#loading-indicator').show(); // Show loading indicator
         $.get('/comments', function (comments) {
             const commentsList = $('#comments-list');
             commentsList.empty(); // Clear the list before updating
@@ -16,8 +17,11 @@ $(document).ready(function () {
                     `);
                 });
             }
-        }).fail(function () {
-            alert('Failed to load comments. Please try again later.');
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            alert('Failed to load comments. Please try again later. Error: ' + textStatus);
+            console.error('Error loading comments:', errorThrown);
+        }).always(function () {
+            $('#loading-indicator').hide(); // Hide loading indicator
         });
     }
 
@@ -27,9 +31,26 @@ $(document).ready(function () {
 
         const name = $('#name').val().trim();
         const comment = $('#comment').val().trim();
+        let isValid = true;
 
-        if (name && comment) {
-            // Post the comment to the server
+        // Validate name
+        if (name.length < 3) {
+            $('#name-error').show();
+            isValid = false;
+        } else {
+            $('#name-error').hide();
+        }
+
+        // Validate comment
+        if (comment.length < 10) {
+            $('#comment-error').show();
+            isValid = false;
+        } else {
+            $('#comment-error').hide();
+        }
+
+        if (isValid) {
+            $('#submit-btn').prop('disabled', true); // Disable submit button to prevent multiple submissions
             $.ajax({
                 url: '/comments',
                 type: 'POST',
@@ -40,8 +61,12 @@ $(document).ready(function () {
                     $('#comment').val(''); // Clear the comment field
                     loadComments(); // Refresh the comments list
                 },
-                error: function () {
-                    alert('Unable to post comment. Please try again later.');
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Unable to post comment. Please try again later. Error: ' + textStatus);
+                    console.error('Error posting comment:', errorThrown);
+                },
+                complete: function () {
+                    $('#submit-btn').prop('disabled', false); // Re-enable submit button after request is complete
                 }
             });
         } else {

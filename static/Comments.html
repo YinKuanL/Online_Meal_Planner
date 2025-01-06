@@ -48,11 +48,13 @@
     <form id="comment-form">
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" class="form-control" required>
+            <input type="text" id="name" class="form-control" required placeholder="Enter your name">
+            <div id="name-error" class="text-danger" style="display:none;">Name is required and must be at least 3 characters long.</div>
         </div>
         <div class="form-group">
             <label for="comment">Comment:</label>
-            <textarea id="comment" class="form-control" rows="3" required></textarea>
+            <textarea id="comment" class="form-control" rows="3" required placeholder="Enter your comment"></textarea>
+            <div id="comment-error" class="text-danger" style="display:none;">Comment is required and must be at least 10 characters long.</div>
         </div>
         <button type="submit" class="btn btn-primary">Submit Comment</button>
     </form>
@@ -62,8 +64,10 @@
         <!-- Comments will be dynamically loaded here -->
     </ul>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/comments.js"></script>
 <script src="audioPlayer.js"></script>
+
 </body>
 </html>

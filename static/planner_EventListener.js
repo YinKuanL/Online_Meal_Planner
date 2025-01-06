@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve saved recipes from local storage or initialise an empty array
+    // Retrieve saved recipes from local storage or initialize an empty array
     const savedRecipesList = document.getElementById('savedRecipesList');
     const savedRecipesDetails = document.getElementById('savedRecipesDetails');
     let files = [];
@@ -45,9 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function searchAndDisplayRecipes(query) {
-        const matchingRecipes = files.filter(fileName => fileName.toLowerCase().includes(query));
+        const matchingRecipes = files.filter(fileName => fileName.toLowerCase().includes(query.toLowerCase()));
+        const recipeOutput = document.getElementById('recipe-output');
         if (matchingRecipes.length > 0) {
-            document.getElementById('recipe-output').innerHTML = '';
+            recipeOutput.innerHTML = '';
             matchingRecipes.forEach(fileName => {
                 fetch(`recipes/${fileName}`)
                     .then(response => response.json())
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     .catch(error => console.error(`Error loading ${fileName}:`, error));
             });
         } else {
-            document.getElementById('recipe-output').innerHTML = '<p>No matching recipes found.</p>';
+            recipeOutput.innerHTML = '<p>No matching recipes found.</p>';
         }
     }
 
@@ -91,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Fetch a new random recipe
             document.getElementById('new-recipe').addEventListener('click', fetchAndRenderRandomRecipe);
             document.getElementById('clear-last-recipe').addEventListener('click', clearLastRecipe);
+
             // Event listener for download button
             document.getElementById('download-recipes').addEventListener('click', downloadCompleteRecipes);
 
@@ -99,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const preference = document.getElementById('preference').value.toLowerCase();
                 searchAndDisplayRecipes(preference);
             });
-
         }
     }
 
@@ -109,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Check if the recipe is already saved
         const isAlreadySaved = recipeDetails.some(savedRecipe => savedRecipe.title === recipe.title);
-        console.log(isAlreadySaved);
-        console.log(recipeDetails);
         if (!isAlreadySaved) {
             // Save the recipe details to local storage
             recipeDetails.push(recipe);
@@ -171,18 +170,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Helper function to format each recipe nicely
     function formatRecipe(recipe) {
-        return `
-Recipe: ${recipe.title}
+        return `Recipe: ${recipe.title}
 Source: ${recipe.source || 'Unknown'}
         
 Ingredients:
 ${recipe.ingredients.join('\n')}
         
 Directions:
-${recipe.directions.join('\n')}
-        `;
+${recipe.directions.join('\n')}`;
     }
-
 });
-
-
