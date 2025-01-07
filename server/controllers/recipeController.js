@@ -1,47 +1,48 @@
 const fs = require('fs');
 const path = require('path');
 
-// 假設儲存食譜的資料夾
+// Define the folder where recipes are stored
 const recipesDirPath = path.join(__dirname, '../recipes');
-// 假設儲存食譜名稱的文字檔
 const listFilePath = path.join(__dirname, '../list.txt');
 
-// 處理檔案錯誤的統一函數
+// Unified function to handle file errors
 const handleFileError = (res, err, message) => {
     console.error(err);
-    res.status(500).send(message);
+    res.status(500).send(message);  // If there is a file error, return 500
 };
 
-// 確保食譜資料夾存在
+// Ensure the recipes directory exists
 const ensureRecipesDirExists = () => {
     if (!fs.existsSync(recipesDirPath)) {
-        fs.mkdirSync(recipesDirPath);
+        fs.mkdirSync(recipesDirPath);  // Create the directory if it doesn't exist
     }
 };
 
-// 創建或更新食譜
+// Save or update a recipe
 exports.saveRecipe = (req, res) => {
     const { recipe } = req.body;
-    if (!recipe) return res.status(400).send('Recipe is required');
+    if (!recipe) return res.status(400).send('Recipe is required');  // If the recipe is missing, return 400
 
-    // 確保 list.txt 檔案存在
+    // Ensure the list.txt file exists
     fs.appendFile(listFilePath, `${recipe}\n`, (err) => {
-        if (err) return handleFileError(res, err, 'Error saving recipe');
-        res.status(200).send('Recipe saved');
+        if (err) return handleFileError(res, err, 'Error saving recipe');  // If there is an error saving the recipe, return 500
+        res.status(200).send('Recipe saved');  // Successfully saved the recipe, return 200
     });
 };
 
-// 更新食譜
+// Update a recipe
 exports.updateRecipe = (req, res) => {
     const title = req.params.title.toLowerCase();
     const updatedRecipe = req.body;
     const recipeFilePath = path.join(recipesDirPath, `${title}.json`);
 
-    // 確保食譜資料夾存在
+    if (!updatedRecipe) return res.status(400).send('Updated recipe data is required');  // If the updated recipe data is missing, return 400
+
+    // Ensure the recipes directory exists
     ensureRecipesDirExists();
 
     fs.writeFile(recipeFilePath, JSON.stringify(updatedRecipe, null, 4), (err) => {
-        if (err) return handleFileError(res, err, 'Error updating recipe');
-        res.status(200).send('Recipe updated');
+        if (err) return handleFileError(res, err, 'Error updating recipe');  // If there is an error updating the recipe, return 500
+        res.status(200).send('Recipe updated');  // Successfully updated the recipe, return 200
     });
 };
