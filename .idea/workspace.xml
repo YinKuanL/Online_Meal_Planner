@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side.">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="(server.test and comment.test)&#10;&#10;These two test.js is all completed.">
+      <change afterPath="$PROJECT_DIR$/static/test/audioPlayer.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/test/script.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/comments.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/server.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/server.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="tsconfig.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -141,7 +140,7 @@
       <workItem from="1736436048431" duration="4391000" />
       <workItem from="1736440843729" duration="1010000" />
       <workItem from="1736441980803" duration="10541000" />
-      <workItem from="1737060588175" duration="1302000" />
+      <workItem from="1737060588175" duration="3243000" />
     </task>
     <task id="LOCAL-00001" summary="first ver-web">
       <option name="closed" value="true" />
@@ -255,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736452060293</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="(server.test and comment.test)&#10;&#10;These two test.js is all completed.">
+      <option name="closed" value="true" />
+      <created>1737062058378</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1737062058378</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +294,7 @@
     <MESSAGE value="eleventh-version(debug)&#10;&#10;Server-side is all completed. It passed all the test in server.test.js. Continue working on client-side." />
     <MESSAGE value="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side." />
     <MESSAGE value="empty the comments.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="empty the comments.json" />
+    <MESSAGE value="(server.test and comment.test)&#10;&#10;These two test.js is all completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="(server.test and comment.test)&#10;&#10;These two test.js is all completed." />
   </component>
 </project>
