@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="tenth-version(debug)&#10;&#10;I updated the file sequences, and optimise the codes.">
-      <change afterPath="$PROJECT_DIR$/server/comments.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/test/comment.test.js" afterDir="false" />
+    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side.">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/commentController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/recipeController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/comments.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/server.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/server.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,36 +49,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.Planners.html.executor": "Run",
-    "JavaScript Debug.Recipes.html.executor": "Debug",
-    "JavaScript Debug.contact.html.executor": "Run",
-    "JavaScript Debug.home.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "Jest.comment.test.js.executor": "Debug",
-    "Jest.server.test.js.executor": "Run",
-    "Node.js.index.js.executor": "Run",
-    "Node.js.script.js.executor": "Run",
-    "Node.js.server.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Yin Kuan/OneDrive/桌面/CW_1/static/style.css",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "C:/Users/Yin Kuan/OneDrive/桌面/CW_1/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\Yin Kuan\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "two.files.diff.last.used.file": "C:/Users/Yin Kuan/OneDrive/桌面/CW_1/static/style.css",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.Planners.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Recipes.html.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.contact.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.comment.test.js.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.server.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.server.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yin Kuan/OneDrive/桌面/CW_1/static/style.css&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Yin Kuan/OneDrive/桌面/CW_1/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Yin Kuan\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/Yin Kuan/OneDrive/桌面/CW_1/static/style.css&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yin Kuan\OneDrive\桌面\CW_1\server" />
@@ -144,7 +140,8 @@
       <workItem from="1736276186751" duration="7170000" />
       <workItem from="1736436048431" duration="4391000" />
       <workItem from="1736440843729" duration="1010000" />
-      <workItem from="1736441980803" duration="9653000" />
+      <workItem from="1736441980803" duration="10541000" />
+      <workItem from="1737060588175" duration="1302000" />
     </task>
     <task id="LOCAL-00001" summary="first ver-web">
       <option name="closed" value="true" />
@@ -242,7 +239,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736283318680</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side.">
+      <option name="closed" value="true" />
+      <created>1736452016591</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1736452016591</updated>
+    </task>
+    <task id="LOCAL-00014" summary="empty the comments.json">
+      <option name="closed" value="true" />
+      <created>1736452060293</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736452060293</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +285,8 @@
     <MESSAGE value="ninth-version(debug)&#10;&#10;I add another js file (planner_EventListener) to handle the issue of eventlistener that 'download button' and 'search bar' didn't exist outside Planners.html. Therefore, it fixed." />
     <MESSAGE value="tenth-version(debug)&#10;&#10;I updated the file sequences, and optimise the codes." />
     <MESSAGE value="eleventh-version(debug)&#10;&#10;Server-side is all completed. It passed all the test in server.test.js. Continue working on client-side." />
-    <option name="LAST_COMMIT_MESSAGE" value="eleventh-version(debug)&#10;&#10;Server-side is all completed. It passed all the test in server.test.js. Continue working on client-side." />
+    <MESSAGE value="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side." />
+    <MESSAGE value="empty the comments.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="empty the comments.json" />
   </component>
 </project>
