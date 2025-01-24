@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="(server.test and comment.test)&#10;&#10;These two test.js is all completed.">
-      <change afterPath="$PROJECT_DIR$/static/test/audioPlayer.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/test/script.test.js" afterDir="false" />
+    <list default="true" id="6899bdd1-cbe8-4301-b825-fbba726696c0" name="Changes" comment="(audioPlayer.test)&#10;&#10;This test.js is all completed.">
+      <change afterPath="$PROJECT_DIR$/static/test/planner_EventListener.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/test/script.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/test/script.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +60,7 @@
     &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
     &quot;Jest.comment.test.js.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.script.test.js.executor&quot;: &quot;Run&quot;,
     &quot;Jest.server.test.js.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
@@ -89,7 +93,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.120" />
       </set>
     </attachedChunks>
   </component>
@@ -140,7 +144,12 @@
       <workItem from="1736436048431" duration="4391000" />
       <workItem from="1736440843729" duration="1010000" />
       <workItem from="1736441980803" duration="10541000" />
-      <workItem from="1737060588175" duration="3243000" />
+      <workItem from="1737060588175" duration="4040000" />
+      <workItem from="1737064965947" duration="962000" />
+      <workItem from="1737323245577" duration="1203000" />
+      <workItem from="1737407145828" duration="1385000" />
+      <workItem from="1737634309651" duration="1130000" />
+      <workItem from="1737728796583" duration="6834000" />
     </task>
     <task id="LOCAL-00001" summary="first ver-web">
       <option name="closed" value="true" />
@@ -262,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737062058378</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="(audioPlayer.test)&#10;&#10;This test.js is all completed.">
+      <option name="closed" value="true" />
+      <created>1737064288150</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1737064288150</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +312,7 @@
     <MESSAGE value="twelfth-version(debug and server.test)&#10;&#10;Server-side is all completed. It passed some test but still need complement. Continue working on client-side." />
     <MESSAGE value="empty the comments.json" />
     <MESSAGE value="(server.test and comment.test)&#10;&#10;These two test.js is all completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="(server.test and comment.test)&#10;&#10;These two test.js is all completed." />
+    <MESSAGE value="(audioPlayer.test)&#10;&#10;This test.js is all completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="(audioPlayer.test)&#10;&#10;This test.js is all completed." />
   </component>
 </project>

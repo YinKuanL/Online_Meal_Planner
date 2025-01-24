@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    // Function to load all comments from the backend
     function loadComments() {
         $('#loading-indicator').show(); // Show loading indicator
         $.get('/comments', function (comments) {
@@ -7,7 +6,8 @@ $(document).ready(function () {
             commentsList.empty(); // Clear the list before updating
             if (comments.length === 0) {
                 commentsList.append('<li class="list-group-item">No comments yet. Be the first to comment!</li>');
-            } else {
+            }
+            else {
                 comments.forEach(comment => {
                     commentsList.append(`
                         <li class="list-group-item">
