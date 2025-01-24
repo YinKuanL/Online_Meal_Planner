@@ -175,7 +175,7 @@ Add a new comment.
 ### Running the Application
 Start the server:
 ```bash
-node server.js
+node .\server\server.js
 ```
 The application will run on `http://localhost:3001`.
 
